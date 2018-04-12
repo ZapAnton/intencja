@@ -1,16 +1,9 @@
 use std::{io, io::Write};
 
-fn show_welcome_message() -> Result<u32, std::io::Error> {
-    println!("Welcome to Intencja Game!");
+fn get_user_input_number() -> Result<u32, io::Error> {
+    print!("\n> ");
 
-    print!(
-        "Press 1 to start a new game.\n\
-         Press 2 to enter game settings.\n\
-         Press 3 to read game tutorial\n\
-         Press 4 to exit game.\n>"
-    );
-
-    io::stdout().flush();
+    io::stdout().flush().unwrap();
 
     let mut user_input = String::new();
 
@@ -24,6 +17,17 @@ fn show_welcome_message() -> Result<u32, std::io::Error> {
         .expect("Failed to parse input. You must enter a number!");
 
     Ok(user_input)
+}
+
+fn show_welcome_message() {
+    println!("Welcome to Intencja Game!");
+
+    println!(
+        "Press 1 to start a new game.\n\
+         Press 2 to enter game settings.\n\
+         Press 3 to read game tutorial\n\
+         Press 4 to exit game."
+    );
 }
 
 fn start_new_game() {
@@ -53,7 +57,9 @@ fn process_option(chosen_option: u32) {
 }
 
 fn main() {
-    let chosen_option = show_welcome_message().expect("Error getting user input!");
+    show_welcome_message();
+
+    let chosen_option = get_user_input_number().expect("Error getting user input!");
 
     process_option(chosen_option);
 }
