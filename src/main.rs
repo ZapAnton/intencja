@@ -1,15 +1,7 @@
 use std::{io, io::Write};
 
 fn get_user_input_number() -> Result<u32, io::Error> {
-    print!("\n> ");
-
-    io::stdout().flush().unwrap();
-
-    let mut user_input = String::new();
-
-    io::stdin()
-        .read_line(&mut user_input)
-        .expect("Failed to read user input!");
+    let user_input = get_user_input_string().expect("Error getting user input!");
 
     let user_input: u32 = user_input
         .trim()
@@ -26,9 +18,7 @@ fn get_user_input_string() -> Result<String, io::Error> {
 
     let mut user_input = String::new();
 
-    io::stdin()
-        .read_line(&mut user_input)
-        .expect("Failed to get user input!");
+    io::stdin().read_line(&mut user_input)?;
 
     let user_input = user_input.trim().to_string();
 
