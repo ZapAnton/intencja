@@ -1,5 +1,10 @@
 use std::{io, io::Write};
 
+#[derive(Debug)]
+struct Player {
+    name: String,
+}
+
 fn get_user_input_number() -> Result<u32, io::Error> {
     let user_input = get_user_input_string().expect("Error getting user input!");
 
@@ -50,12 +55,14 @@ fn start_new_game() {
 
     let player_name = get_user_input_string().unwrap();
 
+    let player = Player { name: player_name };
+
     println!(
-        "{}. Is this your real name? Is it even a name?\n\
+        "\n{}. Is this your real name? Is it even a name?\n\
          This name feels strange - you feel no connection\n\
          with it, as if it does not really belongs to you.\n\
          But for now you let it be.",
-        player_name
+        player.name
     );
 }
 
