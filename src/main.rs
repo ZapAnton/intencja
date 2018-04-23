@@ -19,6 +19,22 @@ fn get_user_input_number() -> Result<u32, io::Error> {
     Ok(user_input)
 }
 
+fn get_user_input_string() -> Result<String, io::Error> {
+    print!("\n> ");
+
+    io::stdout().flush().unwrap();
+
+    let mut user_input = String::new();
+
+    io::stdin()
+        .read_line(&mut user_input)
+        .expect("Failed to get user input!");
+
+    let user_input = user_input.trim().to_string();
+
+    Ok(user_input)
+}
+
 fn show_welcome_message() {
     println!("Welcome to Intencja Game!");
 
@@ -31,7 +47,26 @@ fn show_welcome_message() {
 }
 
 fn start_new_game() {
-    println!("Starting new game!");
+    println!("Starting new game!\n");
+
+    println!(
+        "You find yourself in a strage, unfamiliar place. \n\
+         You don't remember how you got here. You don't\n\
+         even remember who you are. You are trying hard to\n\
+         recall something, anything and after a moment a name\n\
+         starts emerging in your mind.\n\
+         [ENTER YOU NAME]"
+    );
+
+    let player_name = get_user_input_string().unwrap();
+
+    println!(
+        "{}. Is this your real name? Is it even a name?\n\
+         This name feels strange - you feel no connection\n\
+         with it, as if it does not really belongs to you.\n\
+         But for now you let it be.",
+        player_name
+    );
 }
 
 fn show_settings() {
