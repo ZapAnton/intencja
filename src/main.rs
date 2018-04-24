@@ -64,6 +64,18 @@ fn recall_name_scene() {
     );
 }
 
+fn examine_red_door() {
+
+}
+
+fn examine_yellow_door() {
+
+}
+
+fn examine_brown_door() {
+
+}
+
 fn explore_room_scene() {
     println!(
         "\nYou look around. It appears that you are in some\n\
@@ -74,7 +86,7 @@ fn explore_room_scene() {
 
          As you look around one more time you notice that some walls\n\
          now have doors on them (although you are quite sure that\n\
-         there was nothing on them a second ago). You study the doors.\n
+         there was nothing on them a second ago). You study the doors.
          "
     );
 
@@ -84,13 +96,23 @@ fn explore_room_scene() {
              an old wooden red door covered in moss, a glass door\n\
              with yellow wood frame and a brown door.\n\n\
              
-             1. Examine red old door.\n\
-             2. Examine yellow glass door.\n\
-             3. Examine brown door.\n\
+             1. Examine the red old door.\n\
+             2. Examine the yellow glass door.\n\
+             3. Examine the brown door.\n\
              "
         );
 
-        break;
+        let user_input = get_user_input_number().expect("Error getting user input!");
+
+        match user_input {
+            1 => examine_red_door(),
+            
+            2 => examine_yellow_door(),
+
+            3 => examine_brown_door(),
+
+            _ => continue,
+        }
     }
 }
 
