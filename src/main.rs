@@ -41,11 +41,9 @@ fn show_welcome_message() {
     );
 }
 
-fn start_new_game() {
-    println!("Starting new game!\n");
-
+fn recall_name_scene() {
     println!(
-        "You find yourself in a strage, unfamiliar place. \n\
+        "You find yourself in a strage, unfamiliar place.\n\
          You don't remember how you got here. You don't\n\
          even remember who you are. You are trying hard to\n\
          recall something, anything and after a moment a name\n\
@@ -64,6 +62,44 @@ fn start_new_game() {
          But for now you let it be.",
         player.name
     );
+}
+
+fn explore_room_scene() {
+    println!(
+        "\nYou look around. It appears that you are in some\n\
+         kind of room. There is nothing in it - four bare \n\
+         stone walls, stone floor. You look up and to your\n\
+         surprise there is no ceiling - only perpetual darkness\n\
+         of a night sky and a brigth moon, granting you it's light.\n\n\
+
+         As you look around one more time you notice that some walls\n\
+         now have doors on them (although you are quite sure that\n\
+         there was nothing on them a second ago). You study the doors.\n
+         "
+    );
+
+    loop {
+        println!(
+            "There are three door leading from the room:\n\
+             an old wooden red door covered in moss, a glass door\n\
+             with yellow wood frame and a brown door.\n\n\
+             
+             1. Examine red old door.\n\
+             2. Examine yellow glass door.\n\
+             3. Examine brown door.\n\
+             "
+        );
+
+        break;
+    }
+}
+
+fn start_new_game() {
+    println!("Starting new game!\n");
+
+    recall_name_scene();
+
+    explore_room_scene();
 }
 
 fn show_settings() {
