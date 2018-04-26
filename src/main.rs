@@ -64,17 +64,34 @@ fn recall_name_scene() {
     );
 }
 
+fn red_door_scene() {}
+
 fn examine_red_door() {
+    println!(
+        "You approach the red door. At close range you notice\n\
+        that it is really old and almost thoroughly rotten. Perhaps once it was\n\
+        sanguine, but now the color transfored into a mixture of brown, green\n\
+        and dirty red. You are actually afraid that if you try to open the door,\n\
+        it will just crash.\n\n\
+        
+        1. Try to open the door.\n\
+        2. Continue to explore the room.\n"
+    );
 
+    let user_input = get_user_input_number().unwrap();
+
+    match user_input {
+        1 => red_door_scene(),
+        _ => {
+            println!("You go way from the red door and continue to explore the room");
+            return;
+        }
+    }
 }
 
-fn examine_yellow_door() {
+fn examine_yellow_door() {}
 
-}
-
-fn examine_brown_door() {
-
-}
+fn examine_brown_door() {}
 
 fn explore_room_scene() {
     println!(
@@ -106,7 +123,6 @@ fn explore_room_scene() {
 
         match user_input {
             1 => examine_red_door(),
-            
             2 => examine_yellow_door(),
 
             3 => examine_brown_door(),
