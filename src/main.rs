@@ -30,17 +30,6 @@ fn get_user_input_string() -> Result<String, io::Error> {
     Ok(user_input)
 }
 
-fn show_welcome_message() {
-    println!("Welcome to Intencja Game!");
-
-    println!(
-        "Press 1 to start a new game.\n\
-         Press 2 to enter game settings.\n\
-         Press 3 to read game tutorial\n\
-         Press 4 to exit game."
-    );
-}
-
 fn recall_name_scene() {
     println!(
         "You find yourself in a strage, unfamiliar place.\n\
@@ -152,7 +141,18 @@ fn exit_game() {
     println!("Exiting game!");
 }
 
-fn process_option(chosen_option: u32) {
+fn main_menu_scene() {
+    println!("Welcome to Intencja Game!");
+
+    println!(
+        "Press 1 to start a new game.\n\
+         Press 2 to enter game settings.\n\
+         Press 3 to read game tutorial\n\
+         Press 4 to exit game."
+    );
+
+    let user_input = get_user_input_number().expect("Error getting user input!");
+
     match chosen_option {
         1 => start_new_game(),
         2 => show_settings(),
@@ -163,9 +163,5 @@ fn process_option(chosen_option: u32) {
 }
 
 fn main() {
-    show_welcome_message();
-
-    let chosen_option = get_user_input_number().expect("Error getting user input!");
-
-    process_option(chosen_option);
+    main_menu_scene();
 }
