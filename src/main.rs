@@ -1,3 +1,5 @@
+mod data_access;
+
 use std::{io, io::Write};
 
 #[derive(Debug)]
@@ -142,18 +144,14 @@ fn exit_game() {
 }
 
 fn main_menu_scene() {
-    println!("Welcome to Intencja Game!");
-
-    println!(
-        "Press 1 to start a new game.\n\
-         Press 2 to enter game settings.\n\
-         Press 3 to read game tutorial\n\
-         Press 4 to exit game."
+    print!(
+        "{}",
+        data_access::get_text_data("game_menu", "main_menu").expect("Error reading data file!")
     );
 
     let user_input = get_user_input_number().expect("Error getting user input!");
 
-    match chosen_option {
+    match user_input {
         1 => start_new_game(),
         2 => show_settings(),
         3 => show_tutorial(),
