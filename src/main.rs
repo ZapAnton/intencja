@@ -2,6 +2,8 @@ mod data_access;
 
 use std::{io, io::Write};
 
+use data_access::get_text_data;
+
 #[derive(Debug)]
 struct Player {
     name: String,
@@ -33,13 +35,9 @@ fn get_user_input_string() -> Result<String, io::Error> {
 }
 
 fn recall_name_scene() {
-    println!(
-        "You find yourself in a strage, unfamiliar place.\n\
-         You don't remember how you got here. You don't\n\
-         even remember who you are. You are trying hard to\n\
-         recall something, anything and after a moment a name\n\
-         starts emerging in your mind.\n\
-         [ENTER YOU NAME]"
+    print!(
+        "{}",
+        get_text_data("game", "recall_name_intro").expect("Error reading text data!")
     );
 
     let player_name = get_user_input_string().unwrap();
@@ -146,7 +144,7 @@ fn exit_game() {
 fn main_menu_scene() {
     print!(
         "{}",
-        data_access::get_text_data("game_menu", "main_menu").expect("Error reading data file!")
+        get_text_data("game_menu", "main_menu").expect("Error reading data file!")
     );
 
     let user_input = get_user_input_number().expect("Error getting user input!");
