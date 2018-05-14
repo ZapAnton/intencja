@@ -45,26 +45,23 @@ fn recall_name_scene() {
     let player = Player { name: player_name };
 
     println!(
-        "\n{}. Is this your real name? Is it even a name?\n\
-         This name feels strange - you feel no connection\n\
-         with it, as if it does not really belongs to you.\n\
-         But for now you let it be.",
-        player.name
+        "{}. {}",
+        player.name,
+        get_text_data("game", "recall_name_body").expect("Error reading text data!")
     );
 }
 
 fn red_door_scene() {}
 
 fn examine_red_door() {
-    println!(
-        "You approach the red door. At close range you notice\n\
-        that it is really old and almost thoroughly rotten. Perhaps once it was\n\
-        sanguine, but now the color transfored into a mixture of brown, green\n\
-        and dirty red. You are actually afraid that if you try to open the door,\n\
-        it will just crash.\n\n\
-        
-        1. Try to open the door.\n\
-        2. Continue to explore the room.\n"
+    print!(
+        "{}",
+        get_text_data("game", "examine_red_door_intro").expect("Error reading text data!")
+    );
+
+    print!(
+        "{}",
+        get_text_data("game", "examine_red_door_body").expect("Error reading text data!")
     );
 
     let user_input = get_user_input_number().unwrap();
@@ -83,29 +80,15 @@ fn examine_yellow_door() {}
 fn examine_brown_door() {}
 
 fn explore_room_scene() {
-    println!(
-        "\nYou look around. It appears that you are in some\n\
-         kind of room. There is nothing in it - four bare \n\
-         stone walls, stone floor. You look up and to your\n\
-         surprise there is no ceiling - only perpetual darkness\n\
-         of a night sky and a brigth moon, granting you it's light.\n\n\
-
-         As you look around one more time you notice that some walls\n\
-         now have doors on them (although you are quite sure that\n\
-         there was nothing on them a second ago). You study the doors.
-         "
+    print!(
+        "{}",
+        get_text_data("game", "explore_room_intro").expect("Error reading text data!")
     );
 
     loop {
-        println!(
-            "There are three door leading from the room:\n\
-             an old wooden red door covered in moss, a glass door\n\
-             with yellow wood frame and a brown door.\n\n\
-             
-             1. Examine the red old door.\n\
-             2. Examine the yellow glass door.\n\
-             3. Examine the brown door.\n\
-             "
+        print!(
+            "{}",
+            get_text_data("game", "explore_room_body").expect("Error reading text data!")
         );
 
         let user_input = get_user_input_number().expect("Error getting user input!");
