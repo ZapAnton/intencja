@@ -4,11 +4,6 @@ use std::{io, io::Write};
 
 use data_access::get_text_data;
 
-#[derive(Debug)]
-struct Player {
-    name: String,
-}
-
 fn get_user_input_number() -> Result<u32, io::Error> {
     let user_input = get_user_input_string().expect("Error getting user input!");
 
@@ -42,11 +37,9 @@ fn recall_name_scene() {
 
     let player_name = get_user_input_string().unwrap();
 
-    let player = Player { name: player_name };
-
     println!(
         "{}. {}",
-        player.name,
+        player_name,
         get_text_data("game", "recall_name_body").expect("Error reading text data!")
     );
 }
