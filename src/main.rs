@@ -4,6 +4,55 @@ use std::{io, io::Write};
 
 use data_access::get_text_data;
 
+struct Stage {}
+
+struct StageManager {
+    stage: Stage,
+
+    scenes: Vec<Scene>,
+}
+
+struct Scene {
+    dir_name: String,
+    body_filename: String,
+}
+
+impl Stage {
+    fn show_scene(&self, scene: &Scene) {
+        print!("{}", scene.get_body().unwrap());
+    }
+}
+
+impl Scene {
+    fn new(dir_name: &str, body_filename: &str) -> Self {
+        Scene {
+            dir_name: dir_name.to_string(),
+            body_filename: body_filename.to_string(),
+        }
+    }
+
+    fn get_body(&self) -> Result<String, io::Error> {
+        get_text_data(&self.dir_name, &self.body_filename)
+    }
+}
+
+impl StageManager {
+    fn new() -> Self {
+        let mut scenes = Vec::with_capacity(4);
+
+        scenes.push(Scene::new("game_menu", "main_menu"));
+
+        StageManager {
+            stage: Stage{},
+            scenes: scenes,
+        }
+    }
+
+    fn run(&self) {
+        self.stage.show_scene(self.scenes.get(0).unwrap());
+    }
+}
+
 fn get_user_input_number() -> Result<u32, io::Error> {
     let user_input = get_user_input_string().expect("Error getting user input!");
 
@@ -135,5 +184,8 @@ fn main_menu_scene() {
 }
 
 fn main() {
-    main_menu_scene();
+    //main_menu_scene();
+    let stage_manager = StageManager::new();
+
+    stage_manager.run();
 }
