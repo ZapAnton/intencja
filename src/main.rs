@@ -14,7 +14,10 @@ struct StageManager {
 
 struct Scene {
     dir_name: String,
+    
     body_filename: String,
+
+    exits: Vec<(String, String)>,
 }
 
 impl Stage {
@@ -24,10 +27,11 @@ impl Stage {
 }
 
 impl Scene {
-    fn new(dir_name: &str, body_filename: &str) -> Self {
+    fn new(dir_name: &str, body_filename: &str, exits: &Vec<(String, String)>) -> Self {
         Scene {
             dir_name: dir_name.to_string(),
             body_filename: body_filename.to_string(),
+            exits: exits.to_vec(),
         }
     }
 
@@ -40,7 +44,7 @@ impl StageManager {
     fn new() -> Self {
         let mut scenes = Vec::with_capacity(4);
 
-        scenes.push(Scene::new("game_menu", "main_menu"));
+        scenes.push(Scene::new("game_menu", "main_menu", &vec![]));
 
         StageManager {
             stage: Stage{},
