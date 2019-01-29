@@ -1,7 +1,0 @@
-There are three door leading from the room:
-an old wooden red door covered in moss, a glass door
-with yellow wood frame and a brown door.
-
-1. Examine the red old door.
-2. Examine the yellow glass door.
-3. Examine the brown door.

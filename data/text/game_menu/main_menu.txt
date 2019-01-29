@@ -1,6 +1,0 @@
-Welcome to Intencja Game!
-
-Press 1 to start a new game.
-Press 2 to enter game settings.
-Press 3 to read game tutorial.
-Press 4 to exit game.
